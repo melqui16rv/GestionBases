@@ -11,7 +11,6 @@ ALTER TABLE
     "Empleado" ADD CONSTRAINT "empleado_id_empleado_primary" PRIMARY KEY("id_empleado");
 
 
-
 CREATE TABLE "Persona"(
     "Cedula" CHAR(10) NOT NULL,
     "Nombre" VARCHAR(55) NOT NULL,
