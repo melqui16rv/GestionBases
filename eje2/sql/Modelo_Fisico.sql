@@ -76,7 +76,8 @@ CREATE TABLE "rutas" (
     "origen" VARCHAR(255) NOT NULL,
     "destino" VARCHAR(255) NOT NULL,
     "nivel_riesgo_id" INT NOT NULL,
-    "vehiculo_id" INT NOT NULL
+    "vehiculo_id" INT NOT NULL,
+    "estado_id" INT NOT NULL
 );
 ALTER TABLE
     "rutas" ADD CONSTRAINT "pk_rutas" PRIMARY KEY("ruta_id");
@@ -226,4 +227,9 @@ ALTER TABLE "eventos"
 ALTER TABLE "empleados"
     ADD CONSTRAINT "fk_empleados_persona"
     FOREIGN KEY("persona_id") REFERENCES "personas"("cedula")
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+ALTER TABLE "rutas"
+    ADD CONSTRAINT "fk_rutas_estado"
+    FOREIGN KEY("estado_id") REFERENCES "estados"("estado_id")
     ON DELETE NO ACTION ON UPDATE NO ACTION;
