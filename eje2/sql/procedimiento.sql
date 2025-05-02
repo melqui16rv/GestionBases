@@ -7,16 +7,17 @@ BEGIN
         DECLARE @variable_local INT = @estado;
 
         SELECT
-            P."nombre",
-            P."apellido",
-            p."correo",
-            C."nombre" AS "nombre_cargo",
-            V."tipo" AS "tipo_vehiculo",
-            V."placa",
-            R."origen",
-            R."destino",
-            NR."nombre" AS "riesgo_ruta",
-            ET."nombre" AS "estado_ruta"
+          P."nombre",
+          P."apellido",
+          p."correo",
+          C."nombre" AS "nombre_cargo",
+          V."tipo" AS "tipo_vehiculo",
+          V."placa",
+          EV."nombre" AS "estado_vehiculo",
+          R."origen",
+          R."destino",
+          NR."nombre" AS "riesgo_ruta",
+          ER."nombre" AS "estado_ruta"
         FROM
             "rutas" R
         INNER JOIN "vehiculos" V ON R."vehiculo_id" = V."vehiculo_id"
@@ -24,7 +25,8 @@ BEGIN
         INNER JOIN "cargos" C ON E."cargo_id" = C."cargo_id"
         INNER JOIN "personas" P ON E."persona_id" = P."cedula"
         INNER JOIN "niveles_riesgo" NR ON R."nivel_riesgo_id" = NR."nivel_riesgo_id"
-        INNER JOIN "estados" ET ON R."estado_id" = ET."estado_id"
+        INNER JOIN "estados" EV ON V."estado_id" = EV."estado_id"
+        INNER JOIN "estados" ER ON R."estado_id" = ER."estado_id";
         WHERE ET."estado_id" = @estado;
     END TRY
     BEGIN CATCH
@@ -34,4 +36,3 @@ BEGIN
         RAISERROR(@ErrorMessage, @ErrorSeverity, @ErrorState);
     END CATCH
 END
-GO

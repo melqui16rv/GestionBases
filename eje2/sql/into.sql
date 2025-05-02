@@ -1,9 +1,44 @@
 -- INSERT TABLA ESTADOS
 INSERT INTO estados (nombre, descripcion) VALUES
 ('Activo', 'Registro activo en el sistema'),
-('Inactivo', 'Registro inactivo en el sistema'),
-('En mantenimiento', 'Equipo o vehículo en mantenimiento'),
+('Inactivo', 'Registro inactivo en el sistema');
+
+-- Estados adicionales para vehículos
+INSERT INTO estados (nombre, descripcion) VALUES
+('Disponible', 'Vehículo disponible para asignar a una ruta o un empleado'),
+('En reparación', 'Vehículo en taller para reparaciones'),
+('Dañado', 'Vehículo con daños que impiden su uso'),
+('En inspección', 'Vehículo en proceso de inspección técnica'),
 ('En ruta', 'Vehículo o empleado actualmente en ruta'),
+('En pico y placa', 'Vehículo restringido por normativa de circulación'),
+('En préstamo', 'Vehículo asignado temporalmente a otra entidad'),
+('En limpieza', 'Vehículo en proceso de limpieza y desinfección'),
+('Sin combustible', 'Vehículo no disponible por falta de combustible'),
+('Reservado', 'Vehículo y persona asignado para una ruta futura'),
+('Baja técnica', 'Vehículo fuera de servicio por problemas mecánicos'),
+('En proceso de baja', 'Vehículo en trámite de ser dado de baja del sistema'),
+('Secuestrado', 'Vehículo retenido por orden judicial'),
+('En robo', 'Vehículo reportado como robado'),
+('En garantía', 'Vehículo en taller por reclamo de garantía'),
+('Sin documentación', 'Vehículo sin papeles al día');
+
+-- Estados adicionales para personas/empleados
+INSERT INTO estados (nombre, descripcion) VALUES
+('En vacaciones', 'Empleado en período vacacional'),
+('En permiso', 'Empleado con permiso temporal'),
+('Licencia médica', 'Empleado con licencia por enfermedad'),
+('Capacitación', 'Empleado en proceso de capacitación'),
+('En asignación', 'Empleado asignado a vehículo reservado para ruta futura'),
+('En espera', 'Empleado en espera de inicio de ruta');
+
+-- Estados adicionales para rutas
+INSERT INTO estados (nombre, descripcion) VALUES
+('Programada', 'Ruta programada pero no iniciada'),
+('En progreso', 'Ruta actualmente en ejecución'),
+('Completada', 'Ruta finalizada exitosamente'),
+('Cancelada', 'Ruta cancelada antes o durante su ejecución'),
+('Retrasada', 'Ruta con retraso en su horario previsto'),
+('En emergencia', 'Ruta con situación de emergencia reportada'),
 ('Pendiente', 'Estado pendiente de aprobación o revisión');
 
 -- INSERT TABLA CARGOS
@@ -48,19 +83,19 @@ INSERT INTO empleados (persona_id, cargo_id) VALUES
 
 -- INSERT TABLA VEHICULOS
 INSERT INTO vehiculos (tipo, placa, estado_id, color, empleado_id) VALUES
-('Camión', 'ABC123', 1, 'Blanco', 1),
-('Furgoneta', 'DEF456', 1, 'Azul', 2),
-('Pickup', 'GHI789', 3, 'Rojo', 3),
-('Camioneta', 'JKL012', 1, 'Negro', 4),
-('Trailer', 'MNO345', 1, 'Verde', 5);
+('Camión', 'ABC123', 3, 'Blanco', 1),  -- Disponible (3)
+('Furgoneta', 'DEF456', 3, 'Azul', 2),   -- Disponible (3)
+('Pickup', 'GHI789', 4, 'Rojo', 3),      -- En reparación (4)
+('Camioneta', 'JKL012', 3, 'Negro', 4),  -- Disponible (3)
+('Trailer', 'MNO345', 6, 'Verde', 5);    -- En inspección (6)
 
 -- INSERT TABLA RUTAS
 INSERT INTO rutas (origen, destino, nivel_riesgo_id, vehiculo_id, estado_id) VALUES
-('Quito', 'Guayaquil', 2, 1, 1),
-('Guayaquil', 'Cuenca', 1, 2, 1),
-('Cuenca', 'Manta', 3, 3, 4),
-('Manta', 'Esmeraldas', 4, 4, 1),
-('Esmeraldas', 'Quito', 2, 5, 1);
+('Quito', 'Guayaquil', 2, 1, 15),  -- Programada (15)
+('Guayaquil', 'Cuenca', 1, 2, 15),  -- Programada (15)
+('Cuenca', 'Manta', 3, 3, 16),  -- En progreso (16)
+('Manta', 'Esmeraldas', 4, 4, 15),  -- Programada (15)
+('Esmeraldas', 'Quito', 2, 5, 15);  -- Programada (15)
 
 -- INSERT TABLA EVENTOS
 INSERT INTO eventos (tipo, ruta_id, nombre, descripcion) VALUES
