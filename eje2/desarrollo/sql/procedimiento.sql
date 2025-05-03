@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE visualizar_rutas_estado
+CREATE OR ALTER PROCEDURE   
     @estado INT = 1
 AS
 BEGIN
