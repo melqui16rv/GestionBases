@@ -1,28 +1,28 @@
-SELECT 
-    A."id_alerta",
-    A."Fecha",
-    E."id_evento",
-    E."Tipo" AS "Tipo_Evento",
-    E."Nombre" AS "Nombre_Evento",
-    E."Descripcion" AS "Descripcion_Evento",
-    R."id_ruta",
-    R."Origen",
-    R."Destino",
-    R."nivelRiesgo",
-    V."id_vehiculo",
-    V."tipo" AS "Tipo_Vehiculo",
-    V."placa",
-    V."color",
-    P."Cedula",
-    P."Nombre" AS "Nombre_Empleado",
-    P."Apellido",
-    P."Telefono",
-    P."Correo"
-FROM 
-    "Alerta" A
-INNER JOIN "Evento" E ON A."id_evento" = E."id_evento"
-INNER JOIN "Ruta" R ON E."id_ruta" = R."id_ruta"
-INNER JOIN "Vehiculo" V ON R."id_vehiculo" = V."id_vehiculo"
-INNER JOIN "Empleado" EM ON A."id_empleado" = EM."id_empleado"
-INNER JOIN "Persona" P ON EM."id_persona" = P."Cedula"
-WHERE A."id_alerta" = 1;
+SELECT * FROM visualizar_alertas;
+
+SELECT * FROM visualizar_rutas;
+
+SELECT * FROM estados;
+
+EXEC visualizar_rutas_estado 4;
+
+SELECT
+	R.estado_id AS estado_ruta,
+  ER.nombre AS estado_nombre_ruta,
+  V.estado_id AS estado_vehiculo,
+  EV.nombre AS estado_nombre_vehiculo,
+  P.estado_id AS estado_persona,
+  EP.nombre estado_nombre_persona
+FROM
+	rutas R
+INNER JOIN estados ER ON R.estado_id = ER.estado_id
+INNER JOIN vehiculos V ON R.vehiculo_id = V.vehiculo_id
+INNER JOIN estados EV ON V.estado_id = EV.estado_id
+INNER JOIN empleados E ON V.empleado_id = E.empleado_id
+INNER JOIN personas P ON E.persona_id = P.cedula
+INNER JOIN estados EP ON P.estado_id = EP.estado_id
+WHERE R.ruta_id = 4;
+
+
+UPDATE rutas SET estado_id = 28
+WHERE rutas.ruta_id = 4;
