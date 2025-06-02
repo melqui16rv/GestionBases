@@ -12,14 +12,9 @@
 
 **INTEGRANTES DEL EQUIPO:**
 
-1. **[Nombre Completo Estudiante 1]**  
-   Documento de Identidad: [C.C. XXXXXXXXXX]
+1. **[Melqui Alexander Romero Veru]**  
 
-2. **[Nombre Completo Estudiante 2]**  
-   Documento de Identidad: [C.C. XXXXXXXXXX]
-
-3. **[Nombre Completo Estudiante 3]**  
-   Documento de Identidad: [C.C. XXXXXXXXXX]
+2. **[Harold Steven Sabogal Perez]**  
 
 ---
 
