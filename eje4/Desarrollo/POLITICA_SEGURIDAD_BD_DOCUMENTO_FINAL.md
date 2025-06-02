@@ -12,9 +12,9 @@
 
 **INTEGRANTES DEL EQUIPO:**
 
-1. **[Melqui Alexander Romero Veru]**  
+1. **Melqui Alexander Romero Veru**  
 
-2. **[Harold Steven Sabogal Perez]**  
+2. **Harold Steven Sabogal Perez**  
 
 ---
 
