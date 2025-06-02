@@ -3,9 +3,9 @@
 
 ---
 
-**UNIVERSIDAD:** Fundación Universitaria del Área Andina
-**ASIGNATURA:** Gestión de Bases de Datos
-**PROFESOR:** ALEX YAHILTON TOVAR GONZALEZ
+**UNIVERSIDAD:** Fundación Universitaria del Área Andina  
+**ASIGNATURA:** Gestión de Bases de Datos  
+**PROFESOR:** ALEX YAHILTON TOVAR GONZALEZ  
 **EJE:** 4 - Seguridad de la BD  
 **FECHA:** Junio 1, 2025  
 
